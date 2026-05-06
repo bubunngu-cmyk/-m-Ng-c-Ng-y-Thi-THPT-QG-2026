@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐẾM NGƯỢC NGÀY THI THPT QUỐC GIA 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #1e3a8a;
+            --accent: #f59e0b;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(30,41,59,0.95));
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+        
+        .club-badge {
+            display: inline-block;
+            background: rgba(234, 179, 8, 0.9);
+            color: #1e2937;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: #f1f5f9;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .countdown {
+            background: rgba(15, 23, 42, 0.85);
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+            border: 2px solid rgba(234, 179, 8, 0.3);
+            text-align: center;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            color: #f59e0b;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .time-block {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 16px;
+            padding: 20px 25px;
+            min-width: 140px;
+            border: 1px solid #64748b;
+            transition: transform 0.3s ease;
+        }
+        
+        .time-block:hover {
+            transform: translateY(-8px);
+        }
+        
+        .number {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+        
+        .label {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .message {
+            margin: 50px auto;
+            max-width: 900px;
+            background: rgba(30, 41, 59, 0.75);
+            padding: 45px;
+            border-radius: 20px;
+            border-left: 6px solid #f59e0b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            line-height: 1.85;
+        }
+        
+        .message h2 {
+            color: #f59e0b;
+            margin-bottom: 25px;
+            font-size: 1.85rem;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: -1; pointer-events: none; }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    
+    <header>
+        <div class="club-badge">CLB NHIẾP ẢNH & MĨ THUẬT</div>
+        <h1>ĐẾM NGƯỢC NGÀY THI</h1>
+        <p class="subtitle">THPT QUỐC GIA 2026</p>
+    </header>
+    
+    <div class="container">
+        <div class="countdown">
+            <div class="countdown-title">⏳ THỜI GIAN CÒN LẠI ĐẾN KỲ THI ⏳</div>
+            <div class="timer" id="timer"></div>
+        </div>
+        
+        <div class="message">
+            <h2>🌟 Lời chúc từ CLB Nhiếp Ảnh & Mĩ  Thuật 🌟</h2>
+            <p>
+                Chúc các sĩ tử trường <strong>PTDTNT THPT tỉnh Điện Biên</strong> hãy bước vào phòng thi với một tâm thế vững vàng như bàn thạch và sự tự tin tuyệt đối, bởi đằng sau mỗi trang giấy thi là bao năm tháng miệt mài đèn sách dưới mái trường nội trú đầy kỷ niệm, là những đêm thức khuya ôn bài có thầy cô luôn kề cạnh bảo bối tận tâm và cả những nỗi nhọc nhằn, sự kỳ vọng vô bờ bến trong ánh mắt của bố mẹ nơi quê nhà.<br><br>
+                
+                Hãy dồn hết tâm sức để biến mọi kiến thức đã học thành vũ khí sắc bén chinh phục những đỉnh cao mới, chứng minh cho tất cả thấy rằng học sinh Nội trú không chỉ giàu nghị lực mà còn vô cùng tài năng. Để khi cầm trên tay kết quả viên mãn, các em có thể tự hào ngẩng cao đầu vì đã không phụ lòng tin yêu của những người thân thương nhất và chính thức mở ra cánh cửa tương lai rực rỡ cho cuộc đời mình!
+            </p>
+        </div>
+    </div>
+    
+    <footer>
+        <p><strong>BIÊN TẬP:</strong> THANH LIEM</p>
+        <p>© 2026 CLB Nhiếp Ảnh & Mĩ Thuật - Được tạo bằng tình yêu và sự hỗ trợ dành cho các sĩ tử NTT Điện Biên</p>
+    </footer>
+    
+    <script>
+        const targetDate = new Date('2026-06-11T00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('timer').innerHTML = `
+                    <div style="font-size: 2.5rem; color: #22c55e; padding: 30px;">
+                        🎉 KỲ THI ĐÃ BẮT ĐẦU! CHÚC CÁC EM THI TỐT! 🎉
+                    </div>
+                `;
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('timer').innerHTML = `
+                <div class="time-block">
+                    <div class="number"></div>
+                    <div class="label">Ngày</div>
+                </div>
+                <div class="time-block">
+                    <div class="number"></div>
+                    <div class="label">Giờ</div>
+                </div>
+                <div class="time-block">
+                    <div class="number"></div>
+                    <div class="label">Phút</div>
+                </div>
+                <div class="time-block">
+                    <div class="number"></div>
+                    <div class="label">Giây</div>
+                </div>
+            `;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Hiệu ứng sao nền
+        function createStars() {
+            const starsContainer = document.createElement('div');
+            starsContainer.className = 'stars';
+            document.body.appendChild(starsContainer);
+            
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'absolute';
+                star.style.background = 'white';
+                star.style.borderRadius = '50%';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                star.style.width = `px`;
+                star.style.height = star.style.width;
+                star.style.left = `%`;
+                star.style.top = `%`;
+                star.style.animation = `pulse s infinite`;
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
